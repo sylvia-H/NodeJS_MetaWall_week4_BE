@@ -17,7 +17,7 @@ const PostController = {
     const posts = await Post.find().populate({
       path: 'author', 
       select: 'name avatar',
-    });
+    }).sort(-createdAt);
     successHandler(res, posts);
   },
   async createPosts(req, res) {
