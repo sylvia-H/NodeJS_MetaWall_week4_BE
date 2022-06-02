@@ -6,7 +6,7 @@ const User = require('../model/user');
 const PostController = {
   async getPosts(req, res) {
     // 貼文時間序列
-    // const timeSort = req.query.timeSort == "asc" ? "createdAt":"-createdAt"
+    const timeSort = req.query.timeSort === "asc" ? "createdAt":"-createdAt"
     // 搜尋貼文內容
     // const q = req.query.q !== undefined ? {"content": new RegExp(req.query.q)} : {};
     // const posts = await Post.find(q).populate({
@@ -17,7 +17,7 @@ const PostController = {
     const posts = await Post.find().populate({
       path: 'author', 
       select: 'name avatar',
-    }).sort("-createdAt");
+    }).sort(timeSort);
     successHandler(res, posts);
   },
   async createPosts(req, res) {
