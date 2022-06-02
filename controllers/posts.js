@@ -12,7 +12,7 @@ const PostController = {
     const posts = await Post.find(q).populate({
       path: 'author', 
       select: 'name photo',
-    }).sort(timeSort);;
+    }).sort(timeSort);
     successHandler(res, posts);
   },
   async createPosts(req, res) {

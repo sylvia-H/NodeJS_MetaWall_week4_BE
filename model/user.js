@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema(
       unique: true,
       select: false,
     },
-    photo: {
+    avatar: {
       type: String,
       required: [true, '請上傳您的頭像圖片位址'],
     },
