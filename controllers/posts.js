@@ -8,13 +8,8 @@ const PostController = {
     // 貼文時間序列
     const timeSort = req.query.timeSort === "asc" ? "createdAt":"-createdAt"
     // 搜尋貼文內容
-    // const q = req.query.q !== undefined ? {"content": new RegExp(req.query.q)} : {};
-    // const posts = await Post.find(q).populate({
-    //   path: 'author', 
-    //   select: 'name avatar',
-    // }).sort(timeSort);
-    
-    const posts = await Post.find().populate({
+    const q = req.query.q !== undefined ? {"content": new RegExp(req.query.q)} : {};
+    const posts = await Post.find(q).populate({
       path: 'author', 
       select: 'name avatar',
     }).sort(timeSort);
