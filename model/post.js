@@ -3,7 +3,7 @@ const postSchema = new mongoose.Schema(
   {
     author: {
       type: mongoose.Schema.ObjectId,
-      ref: "users",
+      ref: "user",
       required: [true, '未填寫貼文作者名'],
     },
     content: {
