@@ -11,7 +11,7 @@ const PostController = {
     const q = req.query.q !== undefined ? {"content": new RegExp(req.query.q)} : {};
     const posts = await Post.find(q).populate({
       path: 'author', 
-      select: 'name photo',
+      select: 'name avatar',
     }).sort(timeSort);
     successHandler(res, posts);
   },
