@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const postSchema = new mongoose.Schema(
   {
+    _id: {
+      type: mongoose.Schema.ObjectId,
+      required: [true, '未正確取得 ID'],
+    },
     author: {
       type: mongoose.Schema.ObjectId,
       ref: "User",
