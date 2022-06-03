@@ -30,14 +30,9 @@ const postSchema = new mongoose.Schema(
     },
     comments: [
       {
-        comment_author: {
+        _id: {
           type: mongoose.Schema.ObjectId,
-          ref: 'User',
-        },
-        body: String,
-        date: {
-          type: Date,
-          default: Date.now,
+          ref: 'Comment',
         },
       },
     ],

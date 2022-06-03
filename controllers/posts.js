@@ -1,7 +1,6 @@
 const successHandler = require('../helper/successHandlers');
 const errorHandler = require('../helper/errorHandlers');
 const Post = require('../model/post');
-const User = require('../model/user');
 
 const PostController = {
   async getPosts(req, res) {
@@ -12,9 +11,13 @@ const PostController = {
       req.query.q !== undefined ? { content: new RegExp(req.query.q) } : {};
     const posts = await Post.find(q)
       .populate({
-        path: 'author comment_author',
+        path: 'author',
         select: 'name avatar',
-      }).sort(timeSort);
+      })
+      .populate({
+        path: 'comments',
+      })
+      .sort(timeSort);
     successHandler(res, posts);
   },
   async createPosts(req, res) {
