@@ -27,6 +27,10 @@ const postSchema = new mongoose.Schema(
     },
     comments: [
       {
+        author: {
+          type: mongoose.Schema.ObjectId,
+          ref: 'User',
+        },
         body: String,
         date: {
           type: Date,
