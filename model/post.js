@@ -30,10 +30,8 @@ const postSchema = new mongoose.Schema(
     },
     comments: [
       {
-        _id: {
-          type: mongoose.Schema.ObjectId,
-          ref: 'Comment',
-        },
+        type: mongoose.Schema.ObjectId,
+        ref: 'Comment',
       },
     ],
     privacy: {
