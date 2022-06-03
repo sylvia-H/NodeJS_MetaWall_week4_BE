@@ -1,9 +1,14 @@
 const successHandler = require('../helper/successHandlers');
 const errorHandler = require('../helper/errorHandlers');
 const Post = require('../model/post');
+const Comment = require('../model/comment');
 
 const PostController = {
   async getPosts(req, res) {
+    const comments = await Comment.find().populate({
+      path: 'author',
+      select: 'name avatar',
+    });
     // 貼文時間序列
     const timeSort = req.query.timeSort === 'asc' ? 'createdAt' : '-createdAt';
     // 搜尋貼文內容
