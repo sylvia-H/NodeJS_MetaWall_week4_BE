@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema(
   {
-    _id: mongoose.ObjectId,
+    _id: {
+      type: mongoose.Schema.ObjectId,
+    },
     name: {
       type: String,
       required: [true, '請輸入您的名字'],
