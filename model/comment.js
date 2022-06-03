@@ -6,12 +6,12 @@ const commentSchema = new mongoose.Schema(
     },
     articleID: {
       type: mongoose.Schema.ObjectId,
-      required: true,
+      required: [true, '沒有貼文 ID'],
     },
     author: {
       type: mongoose.Schema.ObjectId,
       ref: 'User',
-      required: true,
+      required: [true, '缺少回文者資訊'],
     },
     body: {
       type: String,
