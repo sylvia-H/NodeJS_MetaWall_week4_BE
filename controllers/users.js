@@ -5,6 +5,7 @@ const User = require('../model/user');
 const UserController = {
   async getUsers(req, res) {
     try {
+      // const id = new mongoose.Types.ObjectId(req.params.id);
       const { id } = req.params;
       if (id) {
         // await User.findById(id)
