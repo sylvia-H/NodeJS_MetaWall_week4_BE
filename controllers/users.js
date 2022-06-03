@@ -7,16 +7,13 @@ const UserController = {
     try {
       const { id } = req.params;
       if (id) {
-        await User.findById(id)
-        .then((result) => {
-          if (result) {
-            const user = result;
+        await User.findById(id, (err, user) => {
+          if (user) {
             successHandler(res, user);
           } else {
             errorHandler(res, 400, 4003);
           }
-        })
-        .catch(() => errorHandler(res, 400, 4003));;
+        });
       } else {
         const users = await User.find();
         successHandler(res, users);
