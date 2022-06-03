@@ -3,7 +3,7 @@ const postSchema = new mongoose.Schema(
   {
     author: {
       type: mongoose.Schema.ObjectId,
-      ref: "User",
+      ref: 'User',
       required: [true, '未填寫貼文作者名'],
     },
     content: {
@@ -24,10 +24,15 @@ const postSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    comments: {
-      type: Number,
-      default: 0,
-    },
+    comments: [
+      {
+        body: String,
+        date: {
+          type: Date,
+          default: Date.now,
+        },
+      },
+    ],
     privacy: {
       type: String,
       default: 'private',
