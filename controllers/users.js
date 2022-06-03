@@ -4,8 +4,18 @@ const User = require('../model/user');
 
 const UserController = {
   async getUsers(req, res) {
-    const users = await User.find();
-    successHandler(res, users);
+    try {
+      const { id } = req.params;
+      if (id) {
+        const users = await User.findById(id);
+        successHandler(res, users);
+      } else {
+        const users = await User.find();
+        successHandler(res, users);
+      }
+    } catch {
+      errorHandler(res, 400, 4002);
+    }
   },
   async createUsers(req, res) {
     try {
