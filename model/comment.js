@@ -4,7 +4,7 @@ const commentSchema = new mongoose.Schema(
     _id: {
       type: mongoose.Schema.ObjectId,
     },
-    article_id: {
+    articleID: {
       type: mongoose.Schema.ObjectId,
       required: true,
     },

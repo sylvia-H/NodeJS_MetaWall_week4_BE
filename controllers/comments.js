@@ -9,11 +9,11 @@ const CommentController = {
   },
   async createComments(req, res) {
     try {
-      const { article_id, author, body } =
+      const { articleID, author, body } =
         req.body;
-      if (article_id && author && body) {
+      if (articleID && author && body) {
         await Comment.create({
-          article_id,
+          articleID,
           author,
           body
         });
