@@ -4,18 +4,20 @@ const Comment = require('../model/comment');
 
 const CommentController = {
   async getComments(req, res) {
-    const comments = await Comment.find();
+    const comments = await Comment.find().populate({
+      path: 'author',
+      select: 'name avatar',
+    });
     successHandler(res, comments);
   },
   async createComments(req, res) {
     try {
-      const { articleID, author, body } =
-        req.body;
+      const { articleID, author, body } = req.body;
       if (articleID && author && body) {
         await Comment.create({
           articleID,
           author,
-          body
+          body,
         });
         CommentController.getComments(req, res);
       } else {
