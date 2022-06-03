@@ -4,27 +4,32 @@ const User = require('../model/user');
 
 const UserController = {
   async getUsers(req, res) {
-    const { id } = req.params;
-    const q = id !== undefined ? {"_id": id} : {};
-    const users = await User.find(q);
-    successHandler(res, users);
-    // try {
-    //   const { id } = req.params;
-    //   if (id) {
-    //     User.findById(id, function (err, user) {
-    //       if (user) {
-    //         successHandler(res, user);
-    //       } else {
-    //         errorHandler(err, 400, 4003);
-    //       }
-    //     });
-    //   } else {
-    //     const users = await User.find();
-    //     successHandler(res, users);
-    //   }
-    // } catch {
-    //   errorHandler(res, 400, 4002);
-    // }
+    try {
+      const { id } = req.params;
+      if (id) {
+        await User.findById(id)
+          .then((user) => {
+            if (user) {
+              successHandler(res, user);
+            } else {
+              errorHandler(res, 400, 4003);
+            }
+          })
+          .catch(() => errorHandler(res, 400, 4003));
+        // User.findById(id, function (err, user) {
+        //   if (user) {
+        //     successHandler(res, user);
+        //   } else {
+        //     errorHandler(err, 400, 4003);
+        //   }
+        // });
+      } else {
+        const users = await User.find();
+        successHandler(res, users);
+      }
+    } catch {
+      errorHandler(res, 400, 4002);
+    }
   },
   async createUsers(req, res) {
     try {
