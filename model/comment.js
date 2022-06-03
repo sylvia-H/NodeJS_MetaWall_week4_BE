@@ -5,10 +5,14 @@ const commentSchema = new mongoose.Schema(
     _id: {
       type: mongoose.Schema.ObjectId,
     },
+    article_id: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
+    },
     author: {
       type: mongoose.Schema.ObjectId,
       ref: 'User',
-      required: [true, '未正確代入回文作者'],
+      required: true,
     },
     body: {
       type: String,
