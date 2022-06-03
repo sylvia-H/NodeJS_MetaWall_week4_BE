@@ -17,15 +17,15 @@ const UserController = {
         //     }
         //   })
         //   .catch(() => errorHandler(res, 400, 4003));
-        const user = await User.findById(id).exec();
-        successHandler(res, user);
-        // User.findById(id, function (err, user) {
-        //   if (user) {
-        //     successHandler(res, user);
-        //   } else {
-        //     errorHandler(err, 400, 4003);
-        //   }
-        // });
+        // const user = await User.findById(id).exec();
+        // successHandler(res, user);
+        User.findById(id, function (err, user) {
+          if (user) {
+            successHandler(res, user);
+          } else {
+            errorHandler(err, 400, 4003);
+          }
+        });
       } else {
         const users = await User.find();
         successHandler(res, users);
