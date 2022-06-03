@@ -8,17 +8,6 @@ const UserController = {
       // const id = new mongoose.Types.ObjectId(req.params.id);
       const { id } = req.params;
       if (id) {
-        // await User.findById(id)
-        //   .then((user) => {
-        //     if (user) {
-        //       successHandler(res, user);
-        //     } else {
-        //       errorHandler(res, 400, 4003);
-        //     }
-        //   })
-        //   .catch(() => errorHandler(res, 400, 4003));
-        // const user = await User.findById(id).exec();
-        // successHandler(res, user);
         User.findById(id, function (err, user) {
           if (err) {
             errorHandler(res, 400, 4003);
