@@ -4,11 +4,7 @@ const Comment = require('../model/comment');
 
 const CommentController = {
   async getComments(req, res) {
-    const comments = await Comment.find()
-      .populate({
-        path: 'author',
-        select: 'name avatar',
-      });
+    const comments = await Comment.find();
     successHandler(res, comments);
   },
   async createComments(req, res) {
