@@ -28,12 +28,12 @@ const postSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    comments: [
-      {
-        type: mongoose.Schema.ObjectId,
-        ref: 'Comment',
-      },
-    ],
+    // comments: [
+    //   {
+    //     type: mongoose.Schema.ObjectId,
+    //     ref: 'Comment',
+    //   },
+    // ],
     privacy: {
       type: String,
       default: 'private',

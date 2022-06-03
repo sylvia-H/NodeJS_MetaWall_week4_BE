@@ -14,9 +14,6 @@ const PostController = {
         path: 'author',
         select: 'name avatar',
       })
-      .populate({
-        path: 'comments',
-      })
       .sort(timeSort);
     successHandler(res, posts);
   },
