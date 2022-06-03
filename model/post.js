@@ -2,9 +2,6 @@ const mongoose = require('mongoose');
 const postSchema = new mongoose.Schema(
   {
     // _id: mongoose.ObjectId,
-    _id: {
-      type: mongoose.Schema.ObjectId,
-    },
     author: {
       type: mongoose.Schema.ObjectId,
       ref: 'User',
