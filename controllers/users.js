@@ -20,10 +20,10 @@ const UserController = {
         // const user = await User.findById(id).exec();
         // successHandler(res, user);
         User.findById(id, function (err, user) {
-          if (user) {
-            successHandler(res, user);
+          if (err) {
+            errorHandler(res, 400, 4003);
           } else {
-            errorHandler(err, 400, 4003);
+            successHandler(res, user);
           }
         });
       } else {
