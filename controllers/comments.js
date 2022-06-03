@@ -17,7 +17,7 @@ const CommentController = {
         await Comment.create({
           articleID,
           author,
-          body,
+          body
         });
         CommentController.getComments(req, res);
       } else {
