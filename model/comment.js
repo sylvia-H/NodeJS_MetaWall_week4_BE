@@ -17,10 +17,6 @@ const commentSchema = new mongoose.Schema(
       type: String,
       required: [true, '沒有回覆內容'],
     },
-    date: {
-      type: Date,
-      default: Date.now,
-    },
   },
   {
     timestamps: true,
