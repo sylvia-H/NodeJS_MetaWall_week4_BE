@@ -7,11 +7,11 @@ const UserController = {
     try {
       const { id } = req.params;
       if (id) {
-        await User.findById(id, (err, user) => {
+        User.findById(id, function (err, user) {
           if (user) {
             successHandler(res, user);
           } else {
-            errorHandler(res, 400, 4003);
+            errorHandler(err, 400, 4003);
           }
         });
       } else {
