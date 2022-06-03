@@ -7,8 +7,16 @@ const UserController = {
     try {
       const { id } = req.params;
       if (id) {
-        const users = await User.findById(id);
-        successHandler(res, users);
+        await User.findById(id)
+        .then((result) => {
+          if (result) {
+            const user = result;
+            successHandler(res, user);
+          } else {
+            errorHandler(res, 400, 4003);
+          }
+        })
+        .catch(() => errorHandler(res, 400, 4003));;
       } else {
         const users = await User.find();
         successHandler(res, users);
