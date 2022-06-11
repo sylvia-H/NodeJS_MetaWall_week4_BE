@@ -15,24 +15,23 @@ const PostController = {
         select: 'name avatar',
       })
       .populate({
-        path: 'comments'
+        path: 'comments',
       })
       .sort(timeSort);
     successHandler(res, posts);
   },
   async createPosts(req, res) {
     try {
-      const { author, content, tags, image, likes, comments, privacy } =
-        req.body;
+      const { author, content } = req.body;
       if (author && content) {
         await Post.create({
           author,
           content,
-          tags,
-          image,
-          likes,
-          comments,
-          privacy,
+          tags: [req.body.tags || 'general'],
+          image: [req.body.image || ''],
+          likes: [req.body.likes || 0],
+          comments: [req.body.comment || ''],
+          privacy: [req.body.privacy || 'private'],
         });
         PostController.getPosts(req, res);
       } else {
